@@ -96,7 +96,7 @@ create table assignment(
     createdTime DATETIME NOT NULL,
     startTime DATETIME NOT NULL,
     endTime DATETIME NOT NULL,
-    -- userId int(11) UNSIGNED NOT NULL,
+    userId int(11) UNSIGNED NOT NULL,
     FOREIGN KEY (courseId) REFERENCES courses(id),
     FOREIGN KEY (userId) REFERENCES user(id)
 )
@@ -127,7 +127,7 @@ create table quiz(
     createdTime DATETIME NOT NULL,
     startTime DATETIME NOT NULL,
     endTime DATETIME NOT NULL,
-    -- userId int(11) UNSIGNED NOT NULL,
+    userId int(11) UNSIGNED NOT NULL,
     FOREIGN KEY (courseId) REFERENCES courses(id),
     FOREIGN KEY (userId) REFERENCES user(id)
 )
@@ -145,7 +145,7 @@ create table quizquestionOptions(
     id int(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     quizquestionId int(11) UNSIGNED NOT NULL,
     options varchar(255) NOT NULL,
-    FOREIGN KEY (quizquestionId) REFERENCES quizquestions(id)
+    FOREIGN KEY (quizquestionId) REFERENCES quizQuestions(id)
 )
 
 create table attemptedQuiz(
@@ -168,7 +168,7 @@ create table quizResult(
     FOREIGN KEY (quizId) REFERENCES quiz(id),
     FOREIGN KEY (questionId) REFERENCES poolQuestions(id),
     FOREIGN KEY (userId) REFERENCES user(id)
-)
+);
 
 create table attemptedquizquestions(
     id int(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -176,7 +176,7 @@ create table attemptedquizquestions(
     quizId int(11) UNSIGNED,
     quizquestionId int(11) UNSIGNED,
     FOREIGN KEY (quizId) REFERENCES quiz(id),
-    FOREIGN KEY (quizquestionId) REFERENCES quizquestions(id),
+    FOREIGN KEY (quizquestionId) REFERENCES quizQuestions(id),
     FOREIGN KEY (userId) REFERENCES user(id)
 )
 
